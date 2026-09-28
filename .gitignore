@@ -1,0 +1,6 @@
+docs/*.pptx
+__pycache__/
+*.py[cod]
+.pytest_cache/
+input/
+output/

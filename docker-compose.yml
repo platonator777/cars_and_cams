@@ -1,0 +1,23 @@
+services:
+  infer:
+    build:
+      context: .
+      target: runtime
+    image: vehicle-reid-final:locked
+    network_mode: none
+    gpus: all
+    shm_size: 2gb
+    volumes:
+      - ${INPUT_DIR:-./input}:/data:ro
+      - ${OUTPUT_DIR:-./output}:/output
+    command:
+      - --images
+      - /data/images
+      - --query
+      - /data/test_query.csv
+      - --gallery
+      - /data/test_gallery.csv
+      - --output
+      - /output
+      - --config
+      - /app/configs/inference.yaml
